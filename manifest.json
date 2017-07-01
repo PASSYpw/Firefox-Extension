@@ -1,0 +1,35 @@
+{
+
+  "manifest_version": 2,
+  "name": "Passy",
+  "version": "1.0",
+
+  "description": "Passy Cloud based Password Manger firefox extension",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+  "permissions": [
+    "activeTab",
+    "https://*/*"
+  ],
+  "browser_action": {
+    "browser_style": true,
+    "default_popup": "popup/index.html",
+    "default_icon": {
+      "16": "icons/passy-16x16.png",
+      "32": "icons/passy-32x32.png"
+    }
+  },
+  "background": {
+    "scripts": ["popup/assets/jquery.min.js", "src/index.js"]
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["popup/assets/jquery.min.js", "src/site.js"]
+    }
+  ]
+
+}
